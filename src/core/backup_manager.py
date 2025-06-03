@@ -152,12 +152,10 @@ class BackupManager(LoggerMixin):
 
             # Generate backup filename: {timestamp}_{database_type}_{database_name}
             database_type = self.database.config.database_type.value
-            backup_filename = f"{timestamp}_{database_type}_{db_name}"
+            backup_filename = f"{timestamp}_{database_type}_{db_name}.sql"
 
             if self.config.compression:
                 backup_filename += ".gz"
-            else:
-                backup_filename += ".sql"
 
             backup_file_path = os.path.join(session.temp_dir, backup_filename)
 

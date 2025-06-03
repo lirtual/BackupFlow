@@ -225,12 +225,10 @@ class MultiStrategyBackupManager(LoggerMixin):
             # Generate backup filename
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             database_type = database.config.database_type.value
-            backup_filename = f"{timestamp}_{database_type}_{db_name}"
+            backup_filename = f"{timestamp}_{database_type}_{db_name}.sql"
 
             if strategy.compression:
                 backup_filename += ".gz"
-            else:
-                backup_filename += ".sql"
 
             backup_file_path = os.path.join(temp_dir, backup_filename)
 
